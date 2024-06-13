@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native'
+import React from 'react'
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import { StackNavigator } from './src/presentation/navigation/StackNavigator';
+import { useColorScheme } from 'react-native';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
-export default function App() {
+export const App = () => {
+  //hook tema del dispositivo
+  const colorScheme = useColorScheme();
+  const theme=colorScheme === 'dark' ? eva.dark : eva.light;
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+   <>
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={theme}>
+          <NavigationContainer>
+          <StackNavigator></StackNavigator>
+          </NavigationContainer>
+      </ApplicationProvider>
+    </>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
