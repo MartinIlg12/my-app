@@ -6,11 +6,14 @@ import { styles } from '../../theme/styles';
 import { MyIcon } from '../../components/ui/MyIcon';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/StackNavigator';
+import { API_URL, API_URL_ANDROID, STAGE } from '@env';
 //Definir una interfax de props de navegacion
 interface Props extends StackScreenProps<RootStackParamList, 'LoginScreen'>{ };
 export const LoginScreen = ({navigation}:Props) => {
   // Hook para tomar las dimensiones del dispositivo
   const { height } = useWindowDimensions();
+  //Prueba de las variables de entornp
+  //console.log({apiUrl: API_URL, stage: STAGE});
 
   return (
     <Layout style={{ flex: 1 }}>
